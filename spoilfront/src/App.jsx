@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage'
 import Movies from './pages/Movies'
 import Shows from './pages/Shows'
 import Discover from './pages/Discover'
+import Auth from './pages/Auth'
 
 function App(){
   
@@ -13,6 +14,7 @@ function App(){
     <div className="App">
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/Auth" element={<Auth />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/shows" element={<Shows />} />
         <Route path="/discover" element={<Discover />} />
