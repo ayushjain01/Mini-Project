@@ -2,6 +2,7 @@ import Homepage from "./Homepage";
 import Movies from "./Movies";
 import Shows from "./Shows";
 import Discover from "./Discover";
-import Auth from "./Auth";
 
-export default {Auth,Homepage,Movies,Shows,Discover}
+import Login from "./Login";
+
+export {Homepage,Movies,Shows,Discover,Login}
