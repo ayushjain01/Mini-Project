@@ -3,4 +3,6 @@ import Movies from "./Movies";
 import Shows from "./Shows";
 import Discover from "./Discover";
 
-export default {Homepage,Movies,Shows,Discover}
+import Login from "./Login";
+
+export {Homepage,Movies,Shows,Discover,Login}

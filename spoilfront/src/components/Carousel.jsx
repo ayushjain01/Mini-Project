@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Flex, Image, IconButton ,Text} from "@chakra-ui/react";
+import { Box, Flex, Image, IconButton ,Text,useColorModeValue} from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 
 
@@ -56,7 +56,7 @@ const Carousel = ({cardData}) => {
   };
 
   return (
-    <Flex bg="white" justifyContent="center" alignItems="center">
+    <Flex bg={useColorModeValue('white','black')} justifyContent="center" alignItems="center">
       <IconButton
         aria-label="Previous"
         icon={<ArrowLeftIcon />}
