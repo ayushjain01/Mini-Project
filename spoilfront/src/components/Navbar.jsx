@@ -107,7 +107,7 @@ const Navbar = () => {
                  {colorMode === "light" ? (
                    <Icon as={FiMoon} fontSize="20px" color="brand.100" />
                  ) : (
-                   <Icon as={FiSun} fontSize="20px" color="brand.100" />
+                   <Icon as={FiSun} fontSize="20px" color="white" />
                  )}
                </Button>
                <Link to="/login">

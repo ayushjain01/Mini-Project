@@ -1,6 +1,23 @@
-import { useState } from "react";
-import { Box, Flex, Image, IconButton ,Text,useColorModeValue} from "@chakra-ui/react";
+import { useState, useRef, useEffect, useContext } from "react";
+import {
+  Box,
+  Flex,
+  Image,
+  IconButton,
+  Button,
+  Text,
+  useColorModeValue,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalHeader,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+} from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
+import { useDisclosure } from "@chakra-ui/react";
+import { CardsDataContext } from "./CardContext";
 
 
 // const cardData = [
@@ -36,9 +53,10 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 //   },
 // ];
 
-const Carousel = ({cardData}) => {
+const Carousel = ({ cardData }) => {
   const [startIndex, setStartIndex] = useState(0);
-
+  
+  
   const handleRightArrowClick = () => {
     if (startIndex === cardData.length - 4) {
       setStartIndex(0);
@@ -55,22 +73,104 @@ const Carousel = ({cardData}) => {
     }
   };
 
+  // const navigate = useNavigate();
+  // const handleClick=(id)=>{
+  //   navigate(`/view/${id}`);
+  // }
+  //  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [scrollBehavior, setScrollBehavior] = useState("inside");
+
+  const btnRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [clickedCards, setClickedCards] = useState([]);
+  const { cardsData, setCardsData } = useContext(CardsDataContext);
+
+  useEffect(() => {
+    console.log("clickedCards", clickedCards);
+      const newCardsData = clickedCards
+      setCardsData(newCardsData);
+    
+    console.log(cardsData);
+  }, [clickedCards]);
+
+  const handleOpen = (card) => {
+    setSelectedCard(card);
+    setIsOpen(true);
+    setClickedCards((prevCards) => [...prevCards, card.title]);
+  };
+
+  const handleClose = () => {
+    setSelectedCard(null);
+    setIsOpen(false);
+  };
+
+  const handleSave = () => {
+    const jsonData = JSON.stringify(clickedCards);
+  };
+
   return (
-    <Flex bg={useColorModeValue('white','black')} justifyContent="center" alignItems="center">
+    <Flex
+      bg={useColorModeValue("white", "black")}
+      justifyContent="center"
+      alignItems="center"
+    >
       <IconButton
         aria-label="Previous"
         icon={<ArrowLeftIcon />}
         onClick={handleLeftArrowClick}
       />
       <Box w="80%" display="flex" justifyContent="space-between">
-        {cardData
-          .slice(startIndex, startIndex + 4)
-          .map((card) => (
-            <Box key={card.id}  maxWidth="220px" maxHeight="200px">
-              <Image src={card.image} alt={card.title} borderRadius="10px"/>
-              <Text textAlign="center" paddingTop={1} fontFamily="Montserrat, sans-serif">{card.title}</Text>
-            </Box>
-          ))}
+        {cardData.slice(startIndex, startIndex + 4).map((card) => (
+          <Box
+            ref={btnRef}
+            // onClick={onOpen}
+            onClick={() => {
+              handleOpen(card);
+              console.log(cardsData);
+            }}
+            cursor="pointer"
+            key={card.id}
+            maxWidth="220px"
+            maxHeight="200px"
+          >
+            <Image src={card.image} alt={card.name} borderRadius="10px" />
+
+            {selectedCard && (
+              <Modal
+                isOpen={isOpen}
+                onClose={handleClose}
+                scrollBehavior={scrollBehavior}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>{selectedCard.name}</ModalHeader>
+                  <ModalBody whiteSpace="pre-line">
+                    <Image src={selectedCard.image} mx="auto" />
+
+                    <p>{selectedCard.spoilers}</p>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button as="a" href={selectedCard.source} marginRight={"10px"}>
+                      Watch Here
+                    </Button>
+                    <Button onClick={handleClose}>Close</Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+            )}
+
+            <Text
+              textAlign="center"
+              paddingTop={1}
+              fontFamily="Montserrat, sans-serif"
+              fontWeight={"bold"}
+            >
+              {card.name}
+            </Text>
+          </Box>
+        ))}
       </Box>
       <IconButton
         aria-label="Next"

@@ -2,6 +2,8 @@ import { Box, Flex, Heading, Text,useColorModeValue } from "@chakra-ui/react";
 import Carousel from "../components/Carousel";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ActionAdventure from "./ActionAdventure.json"
+import KidsAndFamily from "./KidsAndFamily.json"
 
 
 const MovieLayout = ({ heading, description, cardData }) => {
@@ -89,11 +91,11 @@ const MovieLayout = ({ heading, description, cardData }) => {
             color="black"
             fontWeight="extrabold"
           >
-            Drama
+            Kids
           </Box>
         </Box>
         <Box width="100%" marginTop={8} marginBottom={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={KidsAndFamily} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "#1a202c")}></Box>
         <Box
@@ -131,7 +133,7 @@ const MovieLayout = ({ heading, description, cardData }) => {
           </Box>
         </Box>
         <Box width="100%" marginTop={8} marginBottom={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={ActionAdventure} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "#1a202c")}></Box>
         <Box
