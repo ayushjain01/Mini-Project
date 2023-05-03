@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useContext } from "react";
 import { CardsDataContext } from "../components/CardContext";
-
+import ActionMovies from "./ActionMovies.json"
 
 const DiscoverLayout = ({ heading, description, cardData }) => {
 
@@ -114,7 +114,7 @@ const DiscoverLayout = ({ heading, description, cardData }) => {
           </Box>
         </Box>
         <Box width="100%" marginTop={8} marginBottom={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={ActionMovies} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "#1a202c")}></Box>
         <Box

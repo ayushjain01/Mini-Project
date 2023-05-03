@@ -4,6 +4,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ActionAdventure from "./ActionAdventure.json"
 import KidsAndFamily from "./KidsAndFamily.json"
+import TamilMovie from "./TamilLanguageMovies.json"
+import HorrorMovies from "./HorrorMovies.json"
+import NewReleases from "./NewReleases.json"
 
 
 const MovieLayout = ({ heading, description, cardData }) => {
@@ -71,7 +74,31 @@ const MovieLayout = ({ heading, description, cardData }) => {
           </Box>
         </Box>
         <Box width="100%" marginTop={8} marginBottom={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={NewReleases} />
+        </Box>
+        <Box height={12} bg={useColorModeValue("#f9f1e8", "#1a202c")}></Box>
+        <Box
+          position="relative"
+          height="1px"
+          bgGradient="linear(to-r, black,black)"
+        >
+          <Box
+            position="absolute"
+            top="-12px"
+            left="100px"
+            width="80px"
+            height="25px"
+            bg="brand.50"
+            paddingX={2}
+            fontFamily="Montserrat, sans-serif"
+            color="black"
+            fontWeight="extrabold"
+          >
+            Horror
+          </Box>
+        </Box>
+        <Box width="100%" marginTop={8} marginBottom={8}>
+          <Carousel cardData={HorrorMovies} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "#1a202c")}></Box>
         <Box
@@ -153,11 +180,11 @@ const MovieLayout = ({ heading, description, cardData }) => {
             color="black"
             fontWeight="extrabold"
           >
-            Romance
+            Tamil
           </Box>
         </Box>
         <Box width="100%" marginTop={8} marginBottom={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={TamilMovie} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "#1a202c")}></Box>
         <Box
@@ -281,7 +308,7 @@ const MovieLayout = ({ heading, description, cardData }) => {
           </Box>
         </Box>
         <Box width="100%" marginTop={8} marginBottom={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={HorrorMovies} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "#1a202c")}></Box>
       </Flex>
