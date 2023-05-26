@@ -5,6 +5,9 @@ import watchtv from '../assets/watchtv.png';
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import cardData from "./cardData.json"
+import ActionMovies from "./ActionMovies.json"
+import ActionAdventure from "./ActionAdventure.json"
+import NewReleases from "./NewReleases.json"
 
 const Homepage = () => {
     
@@ -157,7 +160,7 @@ const Homepage = () => {
           </Box>
         </Box>
         <Box width="100%" marginTop={8} marginBottom={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={ActionMovies} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "black")}></Box>
         <Box
@@ -209,7 +212,7 @@ const Homepage = () => {
           </Box>
         </Box>
         <Box width="100%" marginTop={8} marginBottom={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={ActionAdventure} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "black")}></Box>
         <Box
@@ -247,7 +250,7 @@ const Homepage = () => {
           </Box>
         </Box>
         <Box width="100%" marginTop={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={NewReleases} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "#1a202c")}></Box>
         <Box
