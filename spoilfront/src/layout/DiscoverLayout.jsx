@@ -1,10 +1,16 @@
-import { Box, Flex, Heading, Text,useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text,useColorModeValue, Button } from "@chakra-ui/react";
 import Carousel from "../components/Carousel";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
+import { useContext } from "react";
+import { CardsDataContext } from "../components/CardContext";
+import ActionMovies from "./ActionMovies.json"
 
 const DiscoverLayout = ({ heading, description, cardData }) => {
+
+  const { cardsData, setCardsData } = useContext(CardsDataContext);
+
+
   return (
     <Box>
       <Navbar />
@@ -108,7 +114,7 @@ const DiscoverLayout = ({ heading, description, cardData }) => {
           </Box>
         </Box>
         <Box width="100%" marginTop={8} marginBottom={8}>
-          <Carousel cardData={cardData} />
+          <Carousel cardData={ActionMovies} />
         </Box>
         <Box height={12} bg={useColorModeValue("#f9f1e8", "#1a202c")}></Box>
         <Box
